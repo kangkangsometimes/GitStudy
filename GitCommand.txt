@@ -1,0 +1,102 @@
+1.用户信息
+配置个人的用户名称和电子邮件地址：
+
+git config --global user.name  "用户名"
+
+git config --global user.email "邮箱"
+
+如果使用了--global 选项，那么更改的配置文件就是位于你用户主目录下的那个，以后所有的项目都会默认使用这里配置的用户信息。
+如果要在某个特定的项目中使用其他名字或者电邮，只要去掉--global选项重新配置即可，新的设定保存保存在当前目录的.git/config文件里。
+
+
+2.文本编辑器
+设置Git默认使用的文本编辑器，一般可能会是Vi或者Vim。如果你有其他偏好，比如Emacs的话，可以重新设置：
+git config --global core.editor emacs
+
+3.差异分析工具
+还有一个比较常用的是，在解决合并冲突时使用哪种差异分析工具。比如要改用vimdiff的话：
+git config --global merege.tool vimdiff
+
+Git可以理解kdiff3,tkdiff,meld,xxdiff,merege,vimdiff,gvimdiff,ecmerge,和opendiff等合并工具的输出信息。也可以指定使用自己开发的工具。
+
+4.查看配置信息
+git config --list
+
+也可以直接查阅某个环境变量的设定，只要把特定的名字跟在后面即可，像这样：
+git config user.name
+
+基本概念：
+工作区：就是你电脑里能看到的目录。
+暂存区：英文叫stage，或index。一般存放在“.git目录下”下的index文件(.git/index)中，所以我们把暂存区有时也叫作索引(index).
+版本库：工作区有一个隐藏目录.git,这个不算工作区，而是Git的版本库。
+
+Git创建仓库：
+1.git init 
+(1)使用当前目录作为Git仓库，我们只需要使它初始化。
+git init	该命令执行完后会在当前目录生成一个.git目录。
+
+(2)使用我们指定的目录作为Git仓库
+git init newrepo	初始化后，会在newrepo目录下出现一个名为.git的目录，所有Git需要的数据和资源都存放在这个目录中。
+
+(3)如果当前目录下有几个文件想要纳入版本控制，需要先用git add命令告诉Git开始对这些文件进行跟踪，然后哦，提交：
+git add *.c
+git add README
+git commit -m '初始化项目版本库'
+以上命令将目录下以.c结尾及README文件提交到仓库中。
+
+2.git clone
+(1)克隆仓库的命令格式为：
+git clone <repo>
+(2)克隆到指定的目录，可以使用以下命令：
+git clone <repo> <directory>	参数说明：repo:Git仓库.directory:本地目录。
+
+3.git status
+查看上次提交之后是否有修改
+
+(1)尚未缓存的改动：git diff
+(2)查看已缓存的改动：git diff --cached
+(3)查看已缓存的与未缓存的所有改动：git diff HEAD
+(4)显示摘要而非整个 diff: git diff --stat
+
+4.git commit
+使用git add 命令将想要快照的内容写入缓存区，而执行git commit 将缓存区内容加到仓库中。
+
+如果觉得git add 提交缓存的流太过繁琐，Git也允许用-a选项跳过这一步。 git commit -add
+
+
+5.git reset HEAD
+git reset HEAD 命令用于取消已缓存的内容。
+
+6.git rm
+如果只是简单地从工作目录中手工删除文件，运行git status时就会在changes not staged for commit的提示。
+(1)要从Git中移除某个文件，就必须要从已跟踪文件清单中移除，然后提交。
+git rm <file>
+(2)如果要删除
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
